@@ -1,0 +1,135 @@
+statusId,status
+1,Finished
+2,Disqualified
+3,Accident
+4,Collision
+5,Engine
+6,Gearbox
+7,Transmission
+8,Clutch
+9,Hydraulics
+10,Electrical
+11,+1 Lap
+12,+2 Laps
+13,+3 Laps
+14,+4 Laps
+15,+5 Laps
+16,+6 Laps
+17,+7 Laps
+18,+8 Laps
+19,+9 Laps
+20,Spun Off
+21,Radiator
+22,Suspension
+23,Brakes
+24,Differential
+25,Overheating
+26,Mechanical
+27,Tyre
+28,Driver Seat
+29,Puncture
+30,Driveshaft
+31,Retired
+32,Fuel Pressure
+33,Front Wing
+34,Water Pressure
+35,Refuelling
+36,Wheel
+37,Throttle
+38,Steering
+39,Technical
+40,Electronics
+41,Broken Wing
+42,Heat Shield Fire
+43,Exhaust
+44,Oil Leak
+45,+11 Laps
+46,Wheel Rim
+47,Water Leak
+48,Fuel Pump
+49,Track Rod
+50,+17 Laps
+51,Oil Pressure
+128,+42 Laps
+53,+13 Laps
+54,Withdrew
+55,+12 Laps
+56,Engine Fire
+129,Engine Misfire
+58,+26 Laps
+59,Tyre Puncture
+60,Out Of Fuel
+61,Wheel Nut
+62,Not Classified
+63,Pneumatics
+64,Handling
+65,Rear Wing
+66,Fire
+67,Wheel Bearing
+68,Physical
+69,Fuel System
+70,Oil Line
+71,Fuel Rig
+72,Launch Control
+73,Injured
+74,Fuel
+75,Power Loss
+76,Vibrations
+77,107% Rule
+78,Safety
+79,Drivetrain
+80,Ignition
+81,Did Not Qualify
+82,Injury
+83,Chassis
+84,Battery
+85,Stalled
+86,Halfshaft
+87,Crankshaft
+88,+10 Laps
+89,Safety Concerns
+90,Not Restarted
+91,Alternator
+92,Underweight
+93,Safety Belt
+94,Oil Pump
+95,Fuel Leak
+96,Excluded
+97,Did Not Prequalify
+98,Injection
+99,Distributor
+100,Driver Unwell
+101,Turbo
+102,Cv Joint
+103,Water Pump
+104,Fatal Accident
+105,Spark Plugs
+106,Fuel Pipe
+107,Eye Injury
+108,Oil Pipe
+109,Axle
+110,Water Pipe
+111,+14 Laps
+112,+15 Laps
+113,+25 Laps
+114,+18 Laps
+115,+22 Laps
+116,+16 Laps
+117,+24 Laps
+118,+29 Laps
+119,+23 Laps
+120,+21 Laps
+121,Magneto
+122,+44 Laps
+123,+30 Laps
+124,+19 Laps
+125,+46 Laps
+126,Supercharger
+127,+20 Laps
+130,Collision Damage
+131,Power Unit
+132,Ers
+133,+49 Laps
+134,+38 Laps
+135,Brake Duct
+136,Seat
