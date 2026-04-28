@@ -6,7 +6,7 @@ Use this file to store the final public links for your Tableau deliverables.
 
 | Item | Link | Notes |
 |---|---|---|
-| Tableau Public Dashboard | _Paste URL here_ | _Main submission link_ |
+| Tableau Public Dashboard | https://public.tableau.com/app/profile/harshit.shakya7159/viz/F1PitLaneDashboard/Dashboard3-ReliabilityRishIntelligence2?publish=yes | _Main submission link_ |
 | Workbook / Story Link | _Paste URL here if applicable_ | _Optional_ |
 | Demo Recording | _Paste URL here if applicable_ | _Optional_ |
 
