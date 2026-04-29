@@ -23,11 +23,11 @@
 | -------------------- | ---------------- | --------------- |
 | Project Lead         | Harsh            | `Harsh-sh7`     |
 | Data Lead            | Vani Vashishtha  | `Vani-Max`      |
-| ETL Lead             | Aryan Kumar      | `aryan-krrrr`   |
-| Analysis Lead        | Asad Ali         | `asad24ali06`   |
-| Visualization Lead   | Vani Vashishtha  | `Vani-Max`      |
-| Strategy Lead        | Dikshant Jangra  | `dikshantjangra1`|
-| PPT and Quality Lead | Anshu Yadav      | `anshuyadav9306`|
+| ETL Lead             | Aryan Kumar      | `Ario2006`      |
+| Analysis Lead        | Asad Ali         | `ali7540`       |
+| Visualization Lead   | Vani Vashishtha  | `vani-max`      |
+| Strategy Lead        | Dikshant Jangra  | `DikshantJangra`|
+| PPT and Quality Lead | Anshu Yadav      | `Anshuxy`       |
 
 ---
 
