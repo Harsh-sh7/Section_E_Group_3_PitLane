@@ -7,5 +7,5 @@
 | Aryan Kumar| [Aryan's DVA Portfolio](https://ario2006.github.io/DVA-Portfolio/) |
 | Vani Vashishtha | [Vani's Portfolio](https://dva-portfolio-git-main-vani-maxs-projects.vercel.app/) |
 | Asad Ali | [Asad's Portfolio](https://dvashow.netlify.app/)|
-| _Member 6_ | _URL_ |
+| Anshu Yadav | [Anshu's DVA Portfolio](https://anshuxy.github.io/) |
 | _Member 7_ | _URL_ |
