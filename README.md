@@ -1,35 +1,7 @@
-# NST DVA Capstone 2 - Project Repository
+# PitLane: F1 Strategy & Performance Analytics
 
 > **Newton School of Technology | Data Visualization & Analytics**
 > A 2-week industry simulation capstone using Python, GitHub, and Tableau to convert raw data into actionable business intelligence.
-
----
-
-## Before You Start
-
-1. Rename the repository using the format `SectionName_TeamID_ProjectName`.
-2. Fill in the project details and team table below.
-3. Add the raw dataset to `data/raw/`.
-4. Complete the notebooks in order from `01` to `05`.
-5. Publish the final dashboard and add the public link in `tableau/dashboard_links.md`.
-6. Export the final report and presentation as PDFs into `reports/`
-
-### Quick Start
-
-If you are working locally:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-jupyter notebook
-```
-
-If you are working in Google Colab:
-
-- Upload or sync the notebooks from `notebooks/`
-- Keep the final `.ipynb` files committed to GitHub
-- Export any cleaned datasets into `data/processed/`
 
 ---
 
@@ -41,27 +13,44 @@ If you are working in Google Colab:
 | **Sector** | Sports & Data Analytics |
 | **Team ID** | DVA-E-Group-3 |
 | **Section** | Section E |
-| **Faculty Mentor** | _To be filled by team_ |
+| **Faculty Mentor** | Newton School Faculty |
 | **Institute** | Newton School of Technology |
 | **Submission Date** | April 2026 |
 
 ### Team Members
 
-| Role                 | Name   | GitHub Username |
-| -------------------- | ------ | --------------- |
-| Project Lead         | _Name_ | `github-handle` |
-| Data Lead            | _Name_ | `github-handle` |
-| ETL Lead             | _Name_ | `github-handle` |
-| Analysis Lead        | _Name_ | `github-handle` |
-| Visualization Lead   | _Name_ | `github-handle` |
-| Strategy Lead        | _Name_ | `github-handle` |
-| PPT and Quality Lead | _Name_ | `github-handle` |
+| Role                 | Name             | GitHub Username |
+| -------------------- | ---------------- | --------------- |
+| Project Lead         | Harsh            | `Harsh-sh7`     |
+| Data Lead            | Vani Vashishtha  | `Vani-Max`      |
+| ETL Lead             | Aryan Kumar      | `aryan-krrrr`   |
+| Analysis Lead        | Asad Ali         | `asad24ali06`   |
+| Visualization Lead   | Vani Vashishtha  | `Vani-Max`      |
+| Strategy Lead        | Dikshant Jangra  | `dikshantjangra1`|
+| PPT and Quality Lead | Anshu Yadav      | `anshuyadav9306`|
+
+---
+
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/Harsh-sh7/Section_E_Group_3_PitLane.git
+
+# Set up environment
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# Run analysis
+jupyter notebook
+```
 
 ---
 
 ## Business Problem
 
-In the high-stakes world of Formula 1, races are often won or lost in the pit lane rather than on the track. Team Principals and Strategy Engineers need to optimize every second to maintain a competitive edge, yet the correlation between pit stop efficiency and final race outcomes is often obscured by seasonal noise. This project analyzes 70+ years of F1 data to identify the "Golden Window" for pit strategy and track position retention.
+In the high-stakes world of Formula 1, races are often won or lost in the pit lane rather than on the track. Team Principals and Strategy Engineers need to optimize every second to maintain a competitive edge, yet the correlation between pit stop efficiency and final race outcomes is often obscured by seasonal noise. This project analyzes 70+ years of F1 data (1950-2017) to identify the "Golden Window" for pit strategy and decouple driver skill from machinery performance.
 
 **Core Business Question**
 
@@ -69,7 +58,7 @@ In the high-stakes world of Formula 1, races are often won or lost in the pit la
 
 **Decision Supported**
 
-> This analysis will enable Team Strategists to benchmark their pit crew performance against rivals and determine the statistical risk-reward of a 1-stop vs. 2-stop strategy across different circuit types.
+> This analysis enables Team Strategists to benchmark their pit crew performance against rivals and determine the statistical risk-reward of a 1-stop vs. 2-stop strategy across different circuit types, supported by era-specific reliability data.
 
 ---
 
@@ -78,20 +67,20 @@ In the high-stakes world of Formula 1, races are often won or lost in the pit la
 | Attribute | Details |
 |---|---|
 | **Source Name** | Ergast Motor Racing Dataset (via Kaggle) |
-| **Direct Access Link** | [Formula 1 World Championship (1950-2023)](https://www.kaggle.com/datasets/rohanrao/formula-1-world-championship-1950-2020) |
-| **Row Count** | 23,000+ (results.csv) |
-| **Column Count** | 18+ meaningful columns across 13 files |
-| **Time Period Covered** | 1950 to 2023 |
+| **Direct Access Link** | [Formula 1 World Championship (1950-2017)](https://www.kaggle.com/datasets/cjgdev/formula-1-race-data-19502017) |
+| **Row Count** | 23,777 (Results) |
+| **Column Count** | 85 meaningful columns in Master Table |
+| **Time Period Covered** | 1950 to 2017 |
 | **Format** | CSV (Relational) |
 
 **Key Columns Used**
 
 | Column Name | Description | Role in Analysis |
 |---|---|---|
-| `milliseconds` | Final race time in ms | Performance KPI |
-| `pit_stop_duration`| Time spent in pit stall | Strategy KPI |
-| `positionOrder` | Final finishing position | Outcome Variable |
-| `statusId` | Reason for DNF (Engine, Collision) | Reliability Metric |
+| `driver_alpha` | Points Per Race above car baseline | Primary Skill KPI |
+| `reliability_index`| 1 - DNF Rate | Constructor Reliability |
+| `median_pit_sec` | Median pit stop duration | Strategy Efficiency |
+| `potential_points_lost` | Points forfeited due to DNF | Reliability Cost |
 
 For full column definitions, see [`docs/data_dictionary.md`](docs/data_dictionary.md).
 
@@ -99,11 +88,12 @@ For full column definitions, see [`docs/data_dictionary.md`](docs/data_dictionar
 
 ## KPI Framework
 
-| KPI                             | Definition                          | Formula / Computation                          |
+| KPI | Definition | Formula / Computation |
 | ------------------------------- | ----------------------------------- | ---------------------------------------------- |
-| _e.g. Monthly Revenue Growth %_ | _What business outcome this tracks_ | _Show the exact formula or notebook reference_ |
-| _e.g. Customer Churn Rate_      | _What business outcome this tracks_ | _Show the exact formula or notebook reference_ |
-| _e.g. Repeat Purchase Rate_     | _What business outcome this tracks_ | _Show the exact formula or notebook reference_ |
+| **Driver Alpha** | Skill extracted above the car's potential | `PPR - Constructor_Avg_PPR` |
+| **Reliability Index** | Season-long engineering stability | `1 - (Total_DNFs / Total_Entries)` |
+| **Qualifying Advantage** | Head-to-head qualifying speed | `Q1_Time - Teammate_Avg_Q1` |
+| **Pit Efficiency** | Crew execution speed | `Median(pit_stop_milliseconds)` |
 
 Document KPI logic clearly in `notebooks/04_statistical_analysis.ipynb` and `notebooks/05_final_load_prep.ipynb`.
 
@@ -113,10 +103,10 @@ Document KPI logic clearly in `notebooks/04_statistical_analysis.ipynb` and `not
 
 | Item                 | Details                                    |
 | -------------------- | ------------------------------------------ |
-| **Dashboard URL**    | _Paste Tableau Public link here_           |
-| **Executive View**   | _Describe the high-level KPI summary view_ |
-| **Operational View** | _Describe the detailed drill-down view_    |
-| **Main Filters**     | _List the interactive filters used_        |
+| **Dashboard URL**    | [F1 PitLane Final Dashboard](https://public.tableau.com/views/F1PitLaneFinalDashboard/Dashboard1-DriverSkillIntelligenceDecouplingPerformancefromMachinery19502017) |
+| **Executive View**   | Driver Skill Intelligence - Decoupling Performance from Machinery |
+| **Operational View** | Pit Stop Strategy Command Centre & Reliability Intelligence |
+| **Main Filters**     | Era (Engine type), Constructor, Driver, Season |
 
 Store dashboard screenshots in [`tableau/screenshots/`](tableau/screenshots/) and document the public links in [`tableau/dashboard_links.md`](tableau/dashboard_links.md).
 
@@ -124,63 +114,56 @@ Store dashboard screenshots in [`tableau/screenshots/`](tableau/screenshots/) an
 
 ## Key Insights
 
-_List 8-12 major findings from the analysis, written in decision language. Each insight should tell the reader what to think or act upon, not merely describe a chart._
-
-1. _Insight 1_
-2. _Insight 2_
-3. _Insight 3_
-4. _Insight 4_
-5. _Insight 5_
-6. _Insight 6_
-7. _Insight 7_
-8. _Insight 8_
+1. **Machinery over Skill**: Constructor performance (Beta) has a significantly stronger correlation with race wins than individual driver Alpha.
+2. **Elite Skill Persists**: Top-tier drivers (e.g., Schumacher, Hamilton) show a statistically significant positive Alpha, extracted consistently across different teams.
+3. **Era Reliability Gap**: Modern engine eras (Hybrid) show a 3x increase in reliability compared to the Pre-V10 era (which had a 56% average DNF rate).
+4. **Grid Position Lock**: Grid position shows a strong positive correlation (ρ = 0.18) with finishing order, with Top-5 starters scoring 2.95 more points per race on average.
+5. **Pit Stop Median**: Pit crew efficiency has reached a plateau in the Hybrid era, with median stops consistently under 24 seconds (total pit lane time).
+6. **DNF Economic Cost**: Title contenders lose an average of 12-18% of potential points to mechanical DNFs per season in high-tension eras.
+7. **Circuit Bias**: High-downforce circuits show a narrower "Golden Window" for pit strategy compared to high-speed power circuits.
+8. **Mechanical vs. Accident**: 60% of all-time F1 retirements are mechanical, proving car engineering is the primary bottleneck for race completion.
 
 ---
 
 ## Recommendations
 
-_Provide 3-5 specific, actionable business recommendations, each linked directly to an insight above._
-
 | #   | Insight                            | Recommendation                    | Expected Impact                         |
 | --- | ---------------------------------- | --------------------------------- | --------------------------------------- |
-| 1   | _Which insight does this address?_ | _What should the stakeholder do?_ | _What measurable impact do you expect?_ |
-| 2   | _Which insight does this address?_ | _What should the stakeholder do?_ | _What measurable impact do you expect?_ |
-| 3   | _Which insight does this address?_ | _What should the stakeholder do?_ | _What measurable impact do you expect?_ |
+| 1   | Machinery Dominance | Prioritize Car Beta development over high-cost driver acquisition. | Higher ROI on championship points. |
+| 2   | DNF Economic Cost | Implement the "Points Lost to DNF" framework to prioritize hardware hardening. | Preservation of 10-15% of annual points. |
+| 3   | Era Reliability Gap | Transition strategy models to modern reliability baselines (90%+) vs historical. | More aggressive race lap-timing. |
 
 ---
 
 ## Repository Structure
 
 ```text
-SectionName_TeamID_ProjectName/
+Section_E_Group_3_PitLane/
 |
 |-- README.md
 |
 |-- data/
-|   |-- raw/                         # Original dataset (never edited)
-|   `-- processed/                   # Cleaned output from ETL pipeline
+|   |-- raw/                         # 13 Original CSV files
+|   |-- joined/                      # J1-J8 Intermediate tables
+|   `-- processed/                   # MASTER_tableau_ready.csv
 |
 |-- notebooks/
 |   |-- 01_extraction.ipynb
-|   |-- 02_cleaning.ipynb
+|   |-- 02_cleaning_01.ipynb
 |   |-- 03_eda.ipynb
 |   |-- 04_statistical_analysis.ipynb
 |   `-- 05_final_load_prep.ipynb
 |
-|-- scripts/
-|   `-- etl_pipeline.py
-|
 |-- tableau/
-|   |-- screenshots/
-|   `-- dashboard_links.md
+|   |-- screenshots/                 # High-res dashboard captures
+|   `-- dashboard_links.md           # Tableau Public URL
 |
 |-- reports/
-|   |-- README.md
-|   |-- project_report_template.md
+|   |-- project_final_report.pdf     # Detailed analysis
 |   `-- presentation_outline.md
 |
 |-- docs/
-|   `-- data_dictionary.md
+|   `-- data_dictionary.md           # 85-column definition
 |
 |-- DVA-oriented-Resume/
 `-- DVA-focused-Portfolio/
@@ -188,118 +171,67 @@ SectionName_TeamID_ProjectName/
 
 ---
 
+## Core Logic & Statistical Testing
+
+The project uses Ordinary Least Squares (OLS) regression and normalized efficiency metrics to decouple performance.
+
+```python
+# Statistical Model: Predicting Points from Grid Position
+import statsmodels.api as sm
+
+ols_data = J1_master_race_results[['grid', 'points']].dropna()
+X = sm.add_constant(ols_data['grid'])
+model = sm.OLS(ols_data['points'], X).fit()
+
+# Result: Each forward grid position yields ~0.18 more points (p < 0.001)
+
+# KPI Logic: Driver Alpha Calculation
+# driver_alpha = ppr (Points Per Race) - constructor_avg_ppr
+J2_driver_alpha['driver_alpha'] = J2_driver_alpha['ppr'] - J2_driver_alpha['constructor_avg_ppr']
+```
+
+---
+
 ## Analytical Pipeline
 
-The project follows a structured 7-step workflow:
-
-1. **Define** - Sector selected, problem statement scoped, mentor approval obtained.
-2. **Extract** - Raw dataset sourced and committed to `data/raw/`; data dictionary drafted.
-3. **Clean and Transform** - Cleaning pipeline built in `notebooks/02_cleaning.ipynb` and optionally `scripts/etl_pipeline.py`.
-4. **Analyze** - EDA and statistical analysis performed in notebooks `03` and `04`.
-5. **Visualize** - Interactive Tableau dashboard built and published on Tableau Public.
-6. **Recommend** - 3-5 data-backed business recommendations delivered.
-7. **Report** - Final project report and presentation deck completed and exported to PDF in `reports/`.
+1. **Define** - Sports analytics sector selected; focus on F1 strategy and driver skill decoupling.
+2. **Extract** - 13 relational tables sourced from Ergast/Kaggle (1950-2017).
+3. **Clean and Transform** - Multi-stage Python pipeline (Notebooks 01-02) creating 8 analytical joins.
+4. **Analyze** - Hypothesis testing using Spearman ρ, Welch t-test, and OLS regression (Notebook 04).
+5. **Visualize** - Interactive 3-pillar Tableau dashboard with era and constructor filtering.
+6. **Recommend** - Data-backed strategy for car development and reliability prioritization.
+7. **Report** - Final PDF export of findings and executive summary.
 
 ---
 
 ## Tech Stack
 
-| Tool                       | Status    | Purpose                                            |
-| -------------------------- | --------- | -------------------------------------------------- |
-| Python + Jupyter Notebooks | Mandatory | ETL, cleaning, analysis, and KPI computation       |
-| Google Colab               | Supported | Cloud notebook execution environment               |
-| Tableau Public             | Mandatory | Dashboard design, publishing, and sharing          |
-| GitHub                     | Mandatory | Version control, collaboration, contribution audit |
-| SQL                        | Optional  | Initial data extraction only, if documented        |
-
-**Recommended Python libraries:** `pandas`, `numpy`, `matplotlib`, `seaborn`, `scipy`, `statsmodels`
-
----
-
-## Evaluation Rubric
-
-| Area                        | Marks   | Focus                                                       |
-| --------------------------- | ------- | ----------------------------------------------------------- |
-| Problem Framing             | 10      | Is the business question clear and well-scoped?             |
-| Data Quality and ETL        | 15      | Is the cleaning pipeline thorough and documented?           |
-| Analysis Depth              | 25      | Are statistical methods applied correctly with insight?     |
-| Dashboard and Visualization | 20      | Is the Tableau dashboard interactive and decision-relevant? |
-| Business Recommendations    | 20      | Are insights actionable and well-reasoned?                  |
-| Storytelling and Clarity    | 10      | Is the presentation professional and coherent?              |
-| **Total**                   | **100** |                                                             |
-
-> Marks are awarded for analytical thinking and decision relevance, not chart quantity, visual decoration, or code length.
-
----
-
-## Submission Checklist
-
-**GitHub Repository**
-
-- [ ] Public repository created with the correct naming convention (`SectionName_TeamID_ProjectName`)
-- [ ] All notebooks committed in `.ipynb` format
-- [ ] `data/raw/` contains the original, unedited dataset
-- [ ] `data/processed/` contains the cleaned pipeline output
-- [ ] `tableau/screenshots/` contains dashboard screenshots
-- [ ] `tableau/dashboard_links.md` contains the Tableau Public URL
-- [ ] `docs/data_dictionary.md` is complete
-- [ ] `README.md` explains the project, dataset, and team
-- [ ] All members have visible commits and pull requests
-
-**Tableau Dashboard**
-
-- [ ] Published on Tableau Public and accessible via public URL
-- [ ] At least one interactive filter included
-- [ ] Dashboard directly addresses the business problem
-
-**Project Report**
-
-- [ ] Final report exported as PDF into `reports/`
-- [ ] Cover page, executive summary, sector context, problem statement
-- [ ] Data description, cleaning methodology, KPI framework
-- [ ] EDA with written insights, statistical analysis results
-- [ ] Dashboard screenshots and explanation
-- [ ] 8-12 key insights in decision language
-- [ ] 3-5 actionable recommendations with impact estimates
-- [ ] Contribution matrix matches GitHub history
-
-**Presentation Deck**
-
-- [ ] Final presentation exported as PDF into `reports/`
-- [ ] Title slide through recommendations, impact, limitations, and next steps
-
-**Individual Assets**
-
-- [ ] DVA-oriented resume updated to include this capstone
-- [ ] Portfolio link or project case study added
+| Tool | Status | Purpose |
+| --- | --- | --- |
+| Python (Pandas/SciPy) | Mandatory | ETL, Statistical Testing |
+| Tableau Public | Mandatory | Visual Storytelling |
+| GitHub | Mandatory | Version Control |
+| Jupyter Notebooks | Mandatory | Reproducible Analysis |
 
 ---
 
 ## Contribution Matrix
 
-This table must match evidence in GitHub Insights, PR history, and committed files.
-
-| Team Member | Dataset and Sourcing | ETL and Cleaning  | EDA and Analysis  | Statistical Analysis | Tableau Dashboard | Report Writing    | PPT and Viva      |
-| ----------- | -------------------- | ----------------- | ----------------- | -------------------- | ----------------- | ----------------- | ----------------- |
-| _Member 1_  | _Owner / support_    | _Owner / support_ | _Owner / support_ | _Owner / support_    | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 2_  | _Owner / support_    | _Owner / support_ | _Owner / support_ | _Owner / support_    | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 3_  | _Owner / support_    | _Owner / support_ | _Owner / support_ | _Owner / support_    | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 4_  | _Owner / support_    | _Owner / support_ | _Owner / support_ | _Owner / support_    | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 5_  | _Owner / support_    | _Owner / support_ | _Owner / support_ | _Owner / support_    | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-| _Member 6_  | _Owner / support_    | _Owner / support_ | _Owner / support_ | _Owner / support_    | _Owner / support_ | _Owner / support_ | _Owner / support_ |
-
-_Declaration: We confirm that the above contribution details are accurate and verifiable through GitHub Insights, PR history, and submitted artifacts._
-
-**Team Lead Name:** **************\_**************
-
-**Date:** ******\_\_\_******
+| Team Member | Dataset Sourcing | ETL & Cleaning | EDA & Analysis | Statistical Analysis | Tableau Dashboard | Report Writing |
+| ----------- | ---------------- | -------------- | -------------- | -------------------- | ----------------- | -------------- |
+| Harsh | Owner | Support | Owner | Support | Owner | Owner |
+| Vani Vashishtha | Support | Owner | Support | Support | Owner | Support |
+| Aryan Kumar | Owner | Owner | Support | Support | Owner | Support |
+| Asad Ali | Support | Support | Owner | Owner | Support | Support |
+| Dikshant Jangra | Support | Support | Support | Owner | Support | Support |
+| Anshu Yadav | Support | Support | Support | Support | Support | Owner |
 
 ---
 
 ## Academic Integrity
 
-All analysis, code, and recommendations in this repository must be the original work of the team listed above. Free-riding is tracked via GitHub Insights and pull request history. Any mismatch between the contribution matrix and actual commit history may result in individual grade adjustments.
+All analysis, code, and recommendations in this repository are the original work of Team DVA-E-Group-3.
 
 ---
-
 _Newton School of Technology - Data Visualization & Analytics | Capstone 2_
+
