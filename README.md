@@ -219,12 +219,12 @@ J2_driver_alpha['driver_alpha'] = J2_driver_alpha['ppr'] - J2_driver_alpha['cons
 
 | Team Member | Dataset Sourcing | ETL & Cleaning | EDA & Analysis | Statistical Analysis | Tableau Dashboard | Report Writing |
 | ----------- | ---------------- | -------------- | -------------- | -------------------- | ----------------- | -------------- |
-| Harsh | Owner | Support | Owner | Support | Owner | Owner |
-| Vani Vashishtha | Support | Owner | Support | Support | Owner | Support |
-| Aryan Kumar | Owner | Owner | Support | Support | Owner | Support |
-| Asad Ali | Support | Support | Owner | Owner | Support | Support |
+| Harsh | Owner | Support | Owner | Support | Owner | Support |
+| Vani Vashishtha | Owner | Owner | Support | Support | Owner | Support |
+| Aryan Kumar | Owner | Owner | Support | Owner | Owner | Owner |
+| Asad Ali | Support | Support | Support | Owner | Owner | Support |
 | Dikshant Jangra | Support | Support | Support | Owner | Support | Support |
-| Anshu Yadav | Support | Support | Support | Support | Support | Owner |
+| Anshu Yadav | Support | Owner | Support | Support | Support | Owner |
 
 ---
 
