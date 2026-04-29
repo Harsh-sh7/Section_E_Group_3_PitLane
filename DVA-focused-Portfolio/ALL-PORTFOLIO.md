@@ -3,7 +3,7 @@
 | Name | Portfolio URL |
 |------|--------------|
 | Dikshant Jangra | [dikshantjangra.me](https://dikshantjangra.me/Dikshant-Data_Visualization-Analytics/) |
-| _Member 2_ | _URL_ |
+| Harshit Shakya |  [Harshit Shakya's Portfolio](https://harshit-shakya-portfolio.vercel.app/) |
 | _Member 3_ | _URL_ |
 | _Member 4_ | _URL_ |
 | _Member 5_ | _URL_ |
